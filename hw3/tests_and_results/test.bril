@@ -1,0 +1,14 @@
+@main(a: int) {
+  v1: int = const 1;
+  cond: bool = lt v1 x;
+  br cond .then.0 .else.0;
+.then.0:
+  v2: int = id x;
+  jmp .print;
+.else.0:
+  v3: int = id x;
+  v4: int = const 1;
+  v2: int = sub v3 v4;
+.print:
+  print v2;
+}

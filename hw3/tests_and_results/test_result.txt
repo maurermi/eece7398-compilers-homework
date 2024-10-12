@@ -1,0 +1,45 @@
+printing blocks
+then.0 
+ Instructions: [{'args': ['cond'], 'labels': ['then.0', 'else.0'], 'op': 'br'}, {'args': ['x'], 'dest': 'v2', 'op': 'id', 'type': 'int'}, {'labels': ['print'], 'op': 'jmp'}]
+ ID: then.0
+ Predecessors: {'.start'}
+ Successors: {'print'}
+
+printing blocks
+else.0 
+ Instructions: [{'args': ['cond'], 'labels': ['then.0', 'else.0'], 'op': 'br'}, {'args': ['x'], 'dest': 'v3', 'op': 'id', 'type': 'int'}, {'dest': 'v4', 'op': 'const', 'type': 'int', 'value': 1}, {'args': ['v3', 'v4'], 'dest': 'v2', 'op': 'sub', 'type': 'int'}]
+ ID: else.0
+ Predecessors: {'.start'}
+ Successors: {'print'}
+
+printing blocks
+.start 
+ Instructions: [{'dest': 'v1', 'op': 'const', 'type': 'int', 'value': 1}, {'args': ['v1', 'x'], 'dest': 'cond', 'op': 'lt', 'type': 'bool'}, {'args': ['cond'], 'labels': ['then.0', 'else.0'], 'op': 'br'}]
+ ID: .start
+ Predecessors: set()
+ Successors: {'else.0', 'then.0'}
+
+printing blocks
+print 
+ Instructions: [{'labels': ['print'], 'op': 'jmp'}, {'args': ['v2'], 'op': 'print'}]
+ ID: print
+ Predecessors: {'else.0', 'then.0'}
+ Successors: set()
+
+
+block_id:  then.0
+in_edges:  {'v1': ['.start_0'], 'cond': ['.start_1']}
+out_edges:  {'v1': ['.start_0'], 'cond': ['.start_1'], 'v2': ['then.0_1']}
+
+block_id:  else.0
+in_edges:  {'v1': ['.start_0'], 'cond': ['.start_1']}
+out_edges:  {'v1': ['.start_0'], 'cond': ['.start_1'], 'v3': ['else.0_1'], 'v4': ['else.0_2'], 'v2': ['else.0_3']}
+
+block_id:  .start
+in_edges:  {}
+out_edges:  {'v1': ['.start_0'], 'cond': ['.start_1']}
+
+block_id:  print
+in_edges:  {'v1': ['.start_0'], 'cond': ['.start_1'], 'v3': ['else.0_1'], 'v4': ['else.0_2'], 'v2': ['else.0_3', 'then.0_1']}
+out_edges:  {'v3': ['else.0_1'], 'v4': ['else.0_2'], 'v2': ['else.0_3', 'then.0_1'], 'v1': ['.start_0'], 'cond': ['.start_1']}
+

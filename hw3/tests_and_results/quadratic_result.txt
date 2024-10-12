@@ -1,0 +1,102 @@
+printing blocks
+.start 
+ Instructions: [{'args': ['a', 'b', 'c'], 'funcs': ['quadratic'], 'op': 'call'}]
+ ID: .start
+ Predecessors: set()
+ Successors: set()
+
+
+block_id:  .start
+in_edges:  {}
+out_edges:  {}
+
+printing blocks
+.start 
+ Instructions: [{'dest': 'v1', 'op': 'const', 'type': 'int', 'value': 1}, {'args': ['v1'], 'dest': 'i', 'op': 'id', 'type': 'int'}]
+ ID: .start
+ Predecessors: set()
+ Successors: {'for.cond.0'}
+
+printing blocks
+for.cond.0 
+ Instructions: [{'args': ['i'], 'dest': 'v2', 'op': 'id', 'type': 'int'}, {'args': ['x'], 'dest': 'v3', 'op': 'id', 'type': 'int'}, {'dest': 'v4', 'op': 'const', 'type': 'int', 'value': 1}, {'args': ['v3', 'v4'], 'dest': 'v5', 'op': 'sub', 'type': 'int'}, {'args': ['v2', 'v5'], 'dest': 'v6', 'op': 'lt', 'type': 'bool'}, {'args': ['v6'], 'labels': ['for.body.0', 'for.end.0'], 'op': 'br'}]
+ ID: for.cond.0
+ Predecessors: {'.start', 'endif.7'}
+ Successors: {'for.body.0', 'for.end.0'}
+
+printing blocks
+for.body.0 
+ Instructions: [{'args': ['v6'], 'labels': ['for.body.0', 'for.end.0'], 'op': 'br'}, {'args': ['i'], 'dest': 'v8', 'op': 'id', 'type': 'int'}, {'args': ['i'], 'dest': 'v9', 'op': 'id', 'type': 'int'}, {'args': ['v8', 'v9'], 'dest': 'v10', 'op': 'mul', 'type': 'int'}, {'args': ['x'], 'dest': 'v11', 'op': 'id', 'type': 'int'}, {'args': ['v10', 'v11'], 'dest': 'v12', 'op': 'ge', 'type': 'bool'}, {'args': ['v12'], 'labels': ['then.7', 'else.7'], 'op': 'br'}]
+ ID: for.body.0
+ Predecessors: {'for.cond.0'}
+ Successors: {'then.7', 'else.7'}
+
+printing blocks
+for.end.0 
+ Instructions: [{'args': ['v6'], 'labels': ['for.body.0', 'for.end.0'], 'op': 'br'}, {'dest': 'v17', 'op': 'const', 'type': 'int', 'value': 0}, {'args': ['v17'], 'op': 'ret'}]
+ ID: for.end.0
+ Predecessors: {'for.cond.0'}
+ Successors: set()
+
+printing blocks
+then.7 
+ Instructions: [{'args': ['v12'], 'labels': ['then.7', 'else.7'], 'op': 'br'}, {'args': ['i'], 'dest': 'v13', 'op': 'id', 'type': 'int'}, {'args': ['v13'], 'op': 'ret'}]
+ ID: then.7
+ Predecessors: {'for.body.0'}
+ Successors: set()
+
+printing blocks
+else.7 
+ Instructions: [{'args': ['v12'], 'labels': ['then.7', 'else.7'], 'op': 'br'}]
+ ID: else.7
+ Predecessors: {'for.body.0'}
+ Successors: {'endif.7'}
+
+printing blocks
+endif.7 
+ Instructions: [{'args': ['i'], 'dest': 'v14', 'op': 'id', 'type': 'int'}, {'dest': 'v15', 'op': 'const', 'type': 'int', 'value': 1}, {'args': ['v14', 'v15'], 'dest': 'v16', 'op': 'add', 'type': 'int'}, {'args': ['v16'], 'dest': 'i', 'op': 'id', 'type': 'int'}, {'labels': ['for.cond.0'], 'op': 'jmp'}]
+ ID: endif.7
+ Predecessors: {'else.7'}
+ Successors: {'for.cond.0'}
+
+
+block_id:  .start
+in_edges:  {}
+out_edges:  {'v1': ['.start_0'], 'i': ['.start_1']}
+
+block_id:  for.cond.0
+in_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2']}
+out_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4']}
+
+block_id:  for.body.0
+in_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4']}
+out_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5']}
+
+block_id:  for.end.0
+in_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4']}
+out_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4'], 'v17': ['for.end.0_1']}
+
+block_id:  then.7
+in_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5']}
+out_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5'], 'v13': ['then.7_1']}
+
+block_id:  else.7
+in_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5']}
+out_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5']}
+
+block_id:  endif.7
+in_edges:  {'v1': ['.start_0'], 'i': ['.start_1', 'endif.7_3'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5']}
+out_edges:  {'v1': ['.start_0'], 'v2': ['for.cond.0_0'], 'v3': ['for.cond.0_1'], 'v4': ['for.cond.0_2'], 'v5': ['for.cond.0_3'], 'v6': ['for.cond.0_4'], 'v8': ['for.body.0_1'], 'v9': ['for.body.0_2'], 'v10': ['for.body.0_3'], 'v11': ['for.body.0_4'], 'v12': ['for.body.0_5'], 'v14': ['endif.7_0'], 'v15': ['endif.7_1'], 'v16': ['endif.7_2'], 'i': ['endif.7_3']}
+
+printing blocks
+.start 
+ Instructions: [{'args': ['b'], 'dest': 'v0', 'op': 'id', 'type': 'int'}, {'args': ['b'], 'dest': 'v1', 'op': 'id', 'type': 'int'}, {'args': ['v0', 'v1'], 'dest': 'v2', 'op': 'mul', 'type': 'int'}, {'dest': 'v3', 'op': 'const', 'type': 'int', 'value': 4}, {'args': ['a'], 'dest': 'v4', 'op': 'id', 'type': 'int'}, {'args': ['v3', 'v4'], 'dest': 'v5', 'op': 'mul', 'type': 'int'}, {'args': ['c'], 'dest': 'v6', 'op': 'id', 'type': 'int'}, {'args': ['v5', 'v6'], 'dest': 'v7', 'op': 'mul', 'type': 'int'}, {'args': ['v2', 'v7'], 'dest': 'v8', 'op': 'sub', 'type': 'int'}, {'args': ['v8'], 'dest': 's', 'op': 'id', 'type': 'int'}, {'dest': 'v9', 'op': 'const', 'type': 'int', 'value': 2}, {'args': ['a'], 'dest': 'v10', 'op': 'id', 'type': 'int'}, {'args': ['v9', 'v10'], 'dest': 'v11', 'op': 'mul', 'type': 'int'}, {'args': ['v11'], 'dest': 'd', 'op': 'id', 'type': 'int'}, {'dest': 'v12', 'op': 'const', 'type': 'int', 'value': 0}, {'args': ['b'], 'dest': 'v13', 'op': 'id', 'type': 'int'}, {'args': ['v12', 'v13'], 'dest': 'v14', 'op': 'sub', 'type': 'int'}, {'args': ['s'], 'dest': 'v15', 'op': 'id', 'type': 'int'}, {'args': ['v15'], 'dest': 'v16', 'funcs': ['sqrt'], 'op': 'call', 'type': 'int'}, {'args': ['v14', 'v16'], 'dest': 'v17', 'op': 'add', 'type': 'int'}, {'args': ['v17'], 'dest': 'r1', 'op': 'id', 'type': 'int'}, {'dest': 'v18', 'op': 'const', 'type': 'int', 'value': 0}, {'args': ['b'], 'dest': 'v19', 'op': 'id', 'type': 'int'}, {'args': ['v18', 'v19'], 'dest': 'v20', 'op': 'sub', 'type': 'int'}, {'args': ['s'], 'dest': 'v21', 'op': 'id', 'type': 'int'}, {'args': ['v21'], 'dest': 'v22', 'funcs': ['sqrt'], 'op': 'call', 'type': 'int'}, {'args': ['v20', 'v22'], 'dest': 'v23', 'op': 'sub', 'type': 'int'}, {'args': ['v23'], 'dest': 'r2', 'op': 'id', 'type': 'int'}, {'args': ['r1'], 'dest': 'v24', 'op': 'id', 'type': 'int'}, {'args': ['d'], 'dest': 'v25', 'op': 'id', 'type': 'int'}, {'args': ['v24', 'v25'], 'dest': 'v26', 'op': 'div', 'type': 'int'}, {'args': ['v26'], 'op': 'print'}, {'dest': 'v27', 'op': 'const', 'type': 'int', 'value': 0}, {'args': ['r2'], 'dest': 'v28', 'op': 'id', 'type': 'int'}, {'args': ['d'], 'dest': 'v29', 'op': 'id', 'type': 'int'}, {'args': ['v28', 'v29'], 'dest': 'v30', 'op': 'div', 'type': 'int'}, {'args': ['v30'], 'op': 'print'}, {'dest': 'v31', 'op': 'const', 'type': 'int', 'value': 0}]
+ ID: .start
+ Predecessors: set()
+ Successors: set()
+
+
+block_id:  .start
+in_edges:  {}
+out_edges:  {'v0': ['.start_0'], 'v1': ['.start_1'], 'v2': ['.start_2'], 'v3': ['.start_3'], 'v4': ['.start_4'], 'v5': ['.start_5'], 'v6': ['.start_6'], 'v7': ['.start_7'], 'v8': ['.start_8'], 's': ['.start_9'], 'v9': ['.start_10'], 'v10': ['.start_11'], 'v11': ['.start_12'], 'd': ['.start_13'], 'v12': ['.start_14'], 'v13': ['.start_15'], 'v14': ['.start_16'], 'v15': ['.start_17'], 'v16': ['.start_18'], 'v17': ['.start_19'], 'r1': ['.start_20'], 'v18': ['.start_21'], 'v19': ['.start_22'], 'v20': ['.start_23'], 'v21': ['.start_24'], 'v22': ['.start_25'], 'v23': ['.start_26'], 'r2': ['.start_27'], 'v24': ['.start_28'], 'v25': ['.start_29'], 'v26': ['.start_30'], 'v27': ['.start_32'], 'v28': ['.start_33'], 'v29': ['.start_34'], 'v30': ['.start_35'], 'v31': ['.start_37']}
+

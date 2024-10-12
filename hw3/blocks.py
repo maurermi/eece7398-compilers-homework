@@ -38,7 +38,11 @@ def form_blocks(program: dict):
                 blocks.update({current_block_id: current_block}) # regardless add the current block to the list
 
             # update the current block
-            current_block = Block([instr], instr['label'], set([current_block_id]), set())
+            if label in blocks:
+                # if the label already exists, we update the current block to this one
+                current_block = blocks[label]
+            else:
+                current_block = Block([instr], instr['label'], set([current_block_id]), set())
             if not last_term: # if the last block was a fallthrough, then the last block is a predecessor
                 # it's possible that this is a new label, so we check and update accordingly
                 if label not in blocks:
@@ -68,13 +72,13 @@ def form_blocks(program: dict):
                 if instr['labels'][0] in blocks:
                     blocks[instr['labels'][0]].preds.add(current_block_id)
                 else:
-                    new_block = Block([instr], instr['labels'], set([current_block_id]), set())
+                    new_block = Block([instr], instr['labels'][0], set([current_block_id]), set())
                     blocks.update({instr['labels'][0]: new_block})
                 
                 if instr['labels'][1] in blocks:
                     blocks[instr['labels'][1]].preds.add(current_block_id)
                 else:
-                    new_block = Block([instr], instr['labels'], set([current_block_id]), set())
+                    new_block = Block([instr], instr['labels'][1], set([current_block_id]), set())
                     blocks.update({instr['labels'][1]: new_block})
 
             elif op == 'jmp':
@@ -83,7 +87,7 @@ def form_blocks(program: dict):
                 if instr['labels'][0] in blocks:
                     blocks[instr['labels'][0]].preds.add(current_block_id)
                 else:
-                    new_block = Block([instr], instr['labels'], set([current_block_id]), set())
+                    new_block = Block([instr], instr['labels'][0], set([current_block_id]), set())
                     blocks.update({instr['labels'][0]: new_block})
 
             # if there is a return, it is to another function, so we ignore this as the scope changes

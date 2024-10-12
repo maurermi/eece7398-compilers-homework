@@ -1,0 +1,12 @@
+printing blocks
+.start 
+ Instructions: [{'dest': 'a', 'op': 'const', 'type': 'int', 'value': 4}, {'dest': 'b', 'op': 'const', 'type': 'int', 'value': 2}, {'args': ['a', 'b'], 'dest': 'sum1', 'op': 'add', 'type': 'int'}, {'args': ['a', 'b'], 'dest': 'sum2', 'op': 'add', 'type': 'int'}, {'args': ['sum1', 'sum2'], 'dest': 'prod', 'op': 'mul', 'type': 'int'}, {'args': ['sum1', 'sum2'], 'dest': 'prod2', 'op': 'mul', 'type': 'int'}, {'args': ['prod'], 'op': 'print'}]
+ ID: .start
+ Predecessors: set()
+ Successors: set()
+
+
+block_id:  .start
+in_edges:  {}
+out_edges:  {'a': ['.start_0'], 'b': ['.start_1'], 'sum1': ['.start_2'], 'sum2': ['.start_3'], 'prod': ['.start_4'], 'prod2': ['.start_5']}
+

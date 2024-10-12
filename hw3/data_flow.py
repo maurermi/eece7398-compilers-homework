@@ -9,7 +9,7 @@ from typing import Callable
 import copy
 
 class Analysis():
-    def __init__(self, forward: bool, init, merge: Callable[list, list], transfer: Callable[[dict, blocks.Block], dict]):
+    def __init__(self, forward: bool, merge: Callable[list, list], transfer: Callable[[dict, blocks.Block], dict]):
         self.forward = forward
         self.init = init
         self.merge = merge
@@ -35,10 +35,9 @@ class Analysis():
 
         while len(worklist) > 0:
             block_id = worklist.pop()
-            block = blocks[block_id]
-
-            in_edges[block_id] = copy.deepcopy(self.merge([out_edges[p] for p in block.preds]))
-            b_out = self.transfer(copy.deepcopy(in_edges[block_id]), block)
+            block = copy.deepcopy(blocks[block_id])
+            in_edges[block_id] = copy.deepcopy(self.merge([copy.deepcopy(out_edges[p]) for p in block.preds]))
+            b_out = self.transfer(copy.deepcopy(in_edges[block_id]), copy.deepcopy(block))
             if out_edges[block_id] != b_out:
                 out_edges[block_id] = copy.deepcopy(b_out)
                 if self.forward:
@@ -53,12 +52,10 @@ class Analysis():
 
 def reaching_merge_function(b_ins: list):
     b_out = dict()
-    print(len(b_ins))
     for b_in in b_ins:
-        print("b_in: ", b_in)
         for elem in b_in:
             if elem in b_out:
-                if b_out[elem] == b_in[elem]:
+                if b_in[elem][0] in b_out[elem]:
                     continue
                 b_out[elem].append(b_in[elem][0])
             else:
@@ -67,7 +64,7 @@ def reaching_merge_function(b_ins: list):
 
 def reaching_transfer_function(b_in: dict, block: blocks.Block):
     defs = dict()
-    for instr in block.instrs:
+    for i, instr in enumerate(block.instrs):
         if 'dest' in instr:
             dest = instr['dest']
             if dest in b_in:
@@ -75,7 +72,7 @@ def reaching_transfer_function(b_in: dict, block: blocks.Block):
                 del b_in[dest]
             # add the new definition as a list of instructions
             # we use a list because the merge may have multiple definitions of the same variable
-            defs[dest] = [instr]
+            defs[dest] = [block.id + "_" + str(i)]
     return b_in | defs
 
 if __name__ == '__main__': 
