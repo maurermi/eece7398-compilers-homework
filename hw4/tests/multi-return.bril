@@ -1,0 +1,10 @@
+@foo {
+  zero: int = const 0;
+  cond: bool = gt x zero;
+  br cond .then .else;
+.then:
+  ret x;
+.else:
+  neg: int = neg x;
+  ret neg;
+}

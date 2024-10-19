@@ -1,0 +1,23 @@
+@main {
+  x: int = const 0;
+  y: int = const 0;
+.outer_loop:
+  ten: int = const 10;
+  cond_outer: bool = lt x ten;
+  br cond_outer .inner_loop .exit;
+.inner_loop:
+  five: int = const 5;
+  cond_inner: bool = lt y five;
+  br cond_inner .inner_body .increment_outer;
+.inner_body:
+  one: int = const 1;
+  y: int = add y one;
+  jmp .inner_loop;
+.increment_outer:
+  one: int = const 1;
+  x: int = add x one;
+  y: int = const 0;
+  jmp .outer_loop;
+.exit:
+  ret x;
+}

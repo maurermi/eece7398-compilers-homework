@@ -1,0 +1,25 @@
+@main {
+  x: int = const 0;
+.loop:
+  ten: int = const 10;
+  cond: bool = lt x ten;
+  br cond .body .exit;
+.body:
+  two: int = const 2;
+  mod: int = mod x two;
+  zero: int = const 0;
+  cond2: bool = eq mod zero;
+  br cond2 .even .odd;
+.even:
+  two: int = const 2;
+  x: int = add x two;
+  jmp .merge;
+.odd:
+  one: int = const 1;
+  x: int = add x one;
+  jmp .merge;
+.merge:
+  jmp .loop;
+.exit:
+  ret x;
+}

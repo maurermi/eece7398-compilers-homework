@@ -1,0 +1,13 @@
+@main {
+  x: int = const 5;
+  zero: int = const 0;
+  cond: bool = gt x zero;
+  br cond .true .continue;
+.true:
+  one: int = const 1;
+  x: int = add x one;
+.continue:
+  one: int = const 1;
+  x: int = sub x one;
+  ret x;
+}

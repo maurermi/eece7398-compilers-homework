@@ -1,0 +1,13 @@
+@main {
+  x: int = const 0;
+.loop:
+  ten: int = const 10;
+  cond: bool = lt x ten;
+  br cond .body .exit;
+.body:
+  one: int = const 1;
+  x: int = add x one;
+  jmp .loop;
+.exit:
+  ret x;
+}

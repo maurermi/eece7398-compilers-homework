@@ -1,0 +1,17 @@
+@main {
+  x: int = const 2;
+  one: int = const 1;
+  two: int = const 2;
+  cond1: bool = eq x one;
+  br cond1 .case1 .check_case2;
+.check_case2:
+  cond2: bool = eq x two;
+  br cond2 .case2 .default;
+.case1:
+  ret one;
+.case2:
+  ret two;
+.default:
+  zero: int = const 0;
+  ret zero;
+}
