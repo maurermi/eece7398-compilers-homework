@@ -1,0 +1,4 @@
+  %13 = fdiv float %9, %12
+  %15 = fadd float %14, %13
+  %22 = fmul double %21, 5.000000e-01
+  %27 = fadd double %26, 1.000000e+00

@@ -1,0 +1,10 @@
+  %24 = fmul float %22, %23
+  %27 = fmul float %25, %26
+  %30 = fmul float %28, %29
+  %33 = fmul float %31, %32
+  %36 = fmul float %34, %35
+  %39 = fmul float %37, %38
+  %42 = fmul float %40, %41
+  %45 = fmul float %43, %44
+  %48 = fmul float %46, %47
+  %51 = fmul float %49, %50

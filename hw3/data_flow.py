@@ -11,7 +11,6 @@ import copy
 class Analysis():
     def __init__(self, forward: bool, merge: Callable[list, list], transfer: Callable[[dict, blocks.Block], dict]):
         self.forward = forward
-        self.init = init
         self.merge = merge
         self.transfer = transfer
     
@@ -86,7 +85,7 @@ if __name__ == '__main__':
     with open(filename, 'r') as file:
         program = utils.read_json_file(file)
 
-    analysis = Analysis(True, dict(), reaching_merge_function, reaching_transfer_function)
+    analysis = Analysis(True, reaching_merge_function, reaching_transfer_function)
     for func in program['functions']:
         fn_blocks = blocks.form_blocks(func)
         in_edges, out_edges = analysis.data_flow(fn_blocks)

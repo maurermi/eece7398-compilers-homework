@@ -1,0 +1,6 @@
+  %15 = fsub double %11, %14
+  %20 = fadd float %18, %19
+  %26 = fmul double %22, %25
+  %35 = fdiv double %34, 2.000000e+00
+  %44 = fmul double %43, -1.000000e+00
+  %49 = fadd double %48, 1.500000e+00

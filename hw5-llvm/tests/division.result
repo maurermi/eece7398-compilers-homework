@@ -1,0 +1,2 @@
+  %7 = fdiv float %5, %6
+  %10 = fsub double %9, 1.500000e+00

@@ -1,0 +1,3 @@
+command = "clang-18 -fpass-plugin=`echo build/findfloats/FindFloats.*` {filename}"
+
+

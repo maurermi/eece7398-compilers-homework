@@ -1,0 +1,2 @@
+  %7 = fadd float %5, %6
+  %10 = fmul double %9, 1.500000e+00
